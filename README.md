@@ -1,0 +1,2 @@
+# linux_install_py3
+此脚本主要适用于Linux安装、编译python3达到一键安装Python3 运行环境
