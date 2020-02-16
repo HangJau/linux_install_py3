@@ -2,11 +2,13 @@
 # File APP: py3_install.sh
 # Author: heng
 # Created Time: 2020年02月16日
+# Installation only needs to change py_version
 #########################################################################
 #!/usr/bin/env bash
 
-py_version = "3.7.2/Python-3.7.2.tar.xz"
-py_in_url = "https://www.python.org/ftp/python/"
+read -t 5 -p "Enter python version, Please：" py_version
+#py_version="3.7.2"
+py_in_url="https://www.python.org/ftp/python/${py_version}/Python-${py_version}.tar.xz"
 
 
 install_yilai(){
@@ -17,23 +19,31 @@ install_yilai(){
 	yum install zlib* -y &&
 }
 
+install_py(){
+	#下载python 并做好编译准备
+	wget ${py_in_url} &&
+	
+	tar -xvJf  Python-${py_version}.tar.xz &&
+	mkdir /usr/local/python3 &&
+	
+	cd Python-${py_version} &&
+	./configure --prefix=/usr/local/python3 --enable-optimizations --with-ssl &&
+
+}
+
+set_py(){
+	#编译python3并设置以及更新pip
+	make && make install &&
+	ln -s /usr/local/python3/bin/python3 /usr/local/bin/python3 &&
+	ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3 &&
+
+	pip3 install --upgrade pip &&
+}
+
 install_yilai
 echo "依赖安装完毕..."
-
-wget https://www.python.org/ftp/python/py_version &&
 sleep 5
+install_py
+set_py
 
-tar -xvJf  Python-3.7.2.tar.xz &&
-mkdir /usr/local/python3 &&
-cd Python-3.7.2 &&
-./configure --prefix=/usr/local/python3 --enable-optimizations --with-ssl &&
-#第一个指定安装的路径,不指定的话,安装过程中可能软件所需要的文件复制到其他不同目录,删除软件很不方便,复制软件也不方便.
-#第二个可以提高python10%-20%代码运行速度.
-#第三个是为了安装pip需要用到ssl,后面报错会有提到.
-make && make install &&
-ln -s /usr/local/python3/bin/python3 /usr/local/bin/python3 &&
-ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3 &&
-
-pip3 install --upgrade pip &&
-
-echo "python3 installed successfullly!"
+echo "python3 installed successfully!"
