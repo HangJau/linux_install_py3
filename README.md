@@ -11,6 +11,6 @@
 
 4、等待安装，安装完成会输出： python3 installed successfully!
 
-5：
-  命令行：python3 -V
-  命令行：pip3 -V 
+5、命令行：python3 -V
+
+6、命令行：pip3 -V 
