@@ -3,11 +3,10 @@
 
 使用方法:
 
-1、执行此文件
-2、根据提示输入安装Python3 版本
-  规则：
-     x.x.x   输入的版本格式
-
-3、安装完成,进行验证
-命令行：python3 -V
-命令行：pip3 -V 
+1、编辑此文件内的 py_version 为需要版本，默认3.8.0
+2、保存，退出执行
+3、输出当前当前Python安装版本，任意键确认安装，Ctrl + C 取消安装
+4、等待安装，安装完成会输出： python3 installed successfully!
+5：
+  命令行：python3 -V
+  命令行：pip3 -V 
