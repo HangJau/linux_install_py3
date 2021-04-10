@@ -7,7 +7,7 @@
 #!/usr/bin/env bash
 
 
-py_version="3.8.0"
+py_version="3.7.2"
 
 
 echo "*************************"
