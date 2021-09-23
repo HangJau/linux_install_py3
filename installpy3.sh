@@ -1,6 +1,6 @@
 #########################################################################
 # File APP: py3_install.sh
-# Author: heng
+# Author: hangjau
 # Created Time: 2020年02月16日
 # Installation only needs to change py_version
 #########################################################################
